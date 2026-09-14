@@ -1,0 +1,56 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Rival Schools: United by Fate"
+id = "SLUS-00681"
+players = 2
+exe = "disc/SLUS_006.81"
+disc = "disc/Rival Schools - United by Fate (USA) (Disc 1) (Arcade Disc).cue"
+load_address = "0x80010000"
+entry_pc = "0x80010008"
+text_size = "0x00085000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Rival Schools - United by Fate (USA) (Disc 1) (Arcade Disc).bin"
+cue_name = "Rival Schools - United by Fate (USA) (Disc 1) (Arcade Disc).cue"
+boot_exe = "SLUS_006.81"
+known_sizes = [725629632]
+known_md5 = [
+  "742089ecce542ff076d862694e150370",
+]
+known_sha1 = [
+  "4bc0b5d38806d7836850d869654bf662b00490d9",
+]
+known_crc32 = [
+  "be1ce7d9",
+]
+
+[recompiler]
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+openbios = false
+window_title = "Rival Schools: United by Fate Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "f9b0030859d7a205b367e06d2fd2930b1751b3000981a574a4a4f72fc0f8f3dc"
